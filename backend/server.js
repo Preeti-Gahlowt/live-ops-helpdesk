@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+require("dotenv").config();
 
 const ticketRoutes = require("./routes/ticketRoutes");
 
@@ -22,7 +23,7 @@ const server = http.createServer(app);
 // Create Socket.io server
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL ,
     methods: ["GET", "POST"]
   }
 });
@@ -101,7 +102,7 @@ socket.on("unlock_ticket", (ticketId) => {
 });
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
