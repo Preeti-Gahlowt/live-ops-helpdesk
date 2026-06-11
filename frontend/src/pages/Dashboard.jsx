@@ -7,13 +7,13 @@ function Dashboard() {
 
   
  useEffect(() => {
+console.log("API URL:", import.meta.env.VITE_API_URL);
 
- fetch(
-  `${import.meta.env.VITE_API_URL}/api/tickets`
-)
-    .then((res) => res.json())
-    .then((data) => setTickets(data));
-
+fetch(`${import.meta.env.VITE_API_URL}/api/tickets`)
+  .then((res) => res.text())
+  .then((data) => {
+    console.log("Response:", data);
+  });
   socket.emit("join_dashboard");
 
   socket.on("connect", () => {
