@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { socket } from "../socket/socket";
 function Dashboard() {
-  const [tickets] = useState([]);
+  const [tickets,] = useState([]);
   const [locked, setLocked] = useState({});
   const [mySocketId, setMySocketId] = useState("");
  useEffect(() => {
