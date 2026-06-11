@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { socket } from "../socket/socket";
 function Dashboard() {
-  const [tickets,] = useState([]);
+  const [tickets, setTickets] = useState([]);
   const [locked, setLocked] = useState({});
   const [mySocketId, setMySocketId] = useState("");
  useEffect(() => {
 
- fetch(`${import.meta.env.VITE_API_URL}/api/tickets`)
-  .then((res) => res.text())
-  .then((data) => {
-    console.log(data);
-  });
-  
+ fetch(
+  `${import.meta.env.VITE_API_URL}/api/tickets`
+)
+    .then((res) => res.json())
+    .then((data) => setTickets(data));
 
   socket.emit("join_dashboard");
 
