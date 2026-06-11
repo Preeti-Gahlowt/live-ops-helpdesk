@@ -4,6 +4,11 @@ function Dashboard() {
   const [tickets, setTickets] = useState([]);
   const [locked, setLocked] = useState({});
   const [mySocketId, setMySocketId] = useState("");
+
+  console.log(
+  "API URL:",
+  import.meta.env.VITE_API_URL
+);
  useEffect(() => {
 
  fetch(
